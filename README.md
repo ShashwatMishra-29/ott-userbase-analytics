@@ -1,60 +1,69 @@
-OTT Userbase Analytics
+📺 OTT Userbase Analytics
 
-This project analyzes a streaming platform’s user base to understand revenue patterns, subscription behavior, device preferences, and regional trends. It also includes a machine learning model built to predict a user’s subscription type using demographic and usage features.
+This project explores user behavior on an OTT (streaming) platform using Python, SQL, and a Machine Learning model built to predict subscription type.
+It covers data cleaning, exploration, SQL-based business analysis, feature engineering, visualizations, and an end-to-end modeling pipeline.
 
-All analysis is done using Python, MySQL, and Machine Learning, supported by saved visualizations and reproducible notebooks.
+1. Project Summary
 
-Project Overview
+This analysis focuses on answering key business questions:
 
-The goal of the project is to demonstrate end-to-end analytics capability:
+How many users join each month?
 
-Data cleaning and preprocessing
+Which plans generate the highest revenue?
 
-Exploratory data analysis and visualizations
+Which devices are most popular?
 
-SQL-based business analysis
+How do age, country, and device affect subscription choice?
 
-Feature engineering
+Can we predict what plan a user will choose?
 
-Building a prediction model for subscription type
+The project is structured as a real-world data analytics workflow with clean code, organized folders, and saved outputs.
 
-Saving model artifacts and evaluation outputs
+2. Dataset Info
 
-Organizing a complete, production-like project structure
-
-Dataset
-
-Located in:
+Location:
 
 data/netflix_userbase.csv
 
 
-Main fields include:
-user_id, subscription_type, monthly_revenue, join_date, last_payment_date,
-country, age, gender, device, plan_duration.
+Contains user-level information:
 
-The dataset contains 2,500 user records from various countries and device types.
+User ID
 
-Notebook 1 — Data Cleaning & EDA
+Subscription Type
 
-Notebook path:
+Monthly Revenue
 
-notebooks/ott_userbase_data.ipynb
+Join Date & Last Payment Date
+
+Country, Age, Gender
+
+Device Type
+
+Plan Duration
+
+3. Notebook 1 — Data Cleaning & EDA
+
+Path:
+
+notebooks/01_data_cleaning_eda.ipynb
 
 
-Key steps performed:
+Key tasks:
 
-Cleaned column names and removed whitespace
+Cleaned column names
 
-Converted date fields
+Fixed date formats
 
-Created join_year_month for monthly analysis
+Created new time-based features
 
-Analyzed subscription mix and revenue trends
+Explored revenue trends
 
-Visualized device usage, age distribution, and new joins over time
+Device and age distribution
 
-Visuals saved in the visuals/ folder:
+Monthly user growth
+
+Saved visuals include:
 
 monthly_users.png
 
@@ -64,27 +73,39 @@ device_distribution.png
 
 age_distribution.png
 
-Notebook 2 — Machine Learning Model
+All in the visuals/ folder.
 
-Notebook path:
+4. Notebook 2 — ML Model (Subscription Prediction)
 
-notebooks/subscription_prediction_model.ipynb
+Path:
+
+notebooks/02_subscription_prediction_model.ipynb
 
 Model
 
-A RandomForestClassifier was trained to predict the subscription type (Basic, Standard, Premium).
+A RandomForestClassifier was trained to classify users into Basic, Standard, or Premium subscriptions.
 
-Preprocessing
+Methodology:
 
-OneHotEncoder for categorical variables
+Train/Test split
 
-Passthrough transformation for numeric variables
+OneHotEncoder for categorical features
 
-Combined using ColumnTransformer and a full pipeline
+Pipeline containing preprocessing + model
 
-Outputs
+Feature importance analysis
 
-The following files are generated and saved:
+Confusion matrix evaluation
+
+Predictions exported to CSV
+
+Model Artifacts:
+
+models/ott_subscription_model_rf.joblib
+models/model_info.txt
+
+
+Visual Outputs (saved):
 
 confusion_matrix.png
 
@@ -94,79 +115,76 @@ feature_importance.png
 
 predictions_test_set.csv
 
-models/ott_subscription_model_rf.joblib
+5. SQL Analysis
 
-The model was also exported along with a metadata file (model_info.txt).
-
-SQL Analysis
-
-SQL scripts are stored in:
+SQL scripts:
 
 sql/schema.sql
 sql/analysis_queries.sql
 
 
-The queries include:
+Includes:
 
-Revenue analysis by subscription tier
+Monthly user signups
 
-Device-wise user count and revenue
+Revenue by plan
 
-Country-level revenue contributions
+Device-by-revenue
 
-Monthly growth trends
-
-Gender segmentation
+Country-level contributions
 
 Age group segmentation
 
-Plan duration breakdown
+Plan duration analysis
 
-These queries replicate typical business analytics tasks performed in SQL-driven environments.
+These queries reflect typical business insights tasks in real analytics roles.
 
-How to Run the Project
+6. How to Run the Project
 Install dependencies:
 pip install -r requirements.txt
 
-Run the EDA notebook:
-notebooks/ott_userbase_data.ipynb
+Run Notebooks:
+notebooks/01_data_cleaning_eda.ipynb
+notebooks/02_subscription_prediction_model.ipynb
 
-Run the ML model notebook:
-notebooks/subscription_prediction_model.ipynb
+SQL:
 
-View visual outputs:
+Run both .sql files in MySQL Workbench.
 
-All plots are saved in the visuals/ directory.
+Visuals:
 
-SQL Execution:
+All charts are saved in the visuals/ folder.
 
-Run schema.sql and analysis_queries.sql inside MySQL Workbench.
+7. Key Findings (Example — replace with your numbers)
 
-Key Insights (Example Summary)
+Fill this after checking your notebook results.
 
-Replace these with your actual results after reviewing your notebook outputs.
+Premium users contribute the largest portion of total revenue
 
-Premium users generated the highest share of revenue.
+Laptop & Smart TV users show higher ARPU
 
-Smart TV and Laptop users were more likely to choose higher-tier plans.
+Strong user concentration: US, UK, Canada
 
-Strong user concentrations were seen in the US, UK, and Canada.
+Significant growth in Nov–Dec months
 
-New user signups increase around mid-year and late-year periods.
+Model achieved an accuracy of XX% (replace with real value)
 
-The RandomForest classifier achieved XX% accuracy (update with real number).
+8. Improvements & Next Steps
 
-Future Improvements
+Build Power BI dashboard
+
+Hyperparameter tuning
 
 Add churn prediction
 
-Develop a Power BI dashboard using the same dataset
+Deploy model via API
 
-Hyperparameter tuning for the ML model
+Create a web dashboard version
 
-Add time-series forecasting for revenue and user growth
+9. Author
 
-Build an API wrapper for real-time prediction
+Shashwat Mishra
+GitHub: https://github.com/ShashwatMishra-29
 
 Author
 
