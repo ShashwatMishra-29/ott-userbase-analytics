@@ -21,7 +21,7 @@ The project is structured as a real-world data analytics workflow with clean cod
 
 2. Dataset Info
 
-Location:
+Location
 
 data/netflix_userbase.csv
 
